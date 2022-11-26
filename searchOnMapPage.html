@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="./constants.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Museums web search</title>
+    <link rel="icon" href="images/museumIcon.ico" />
+</head>
+<body>
+
+    <div id="map"></div>
+    <button id="test">test</button> 
+    <button id="search">Click me</button>
+    <select id="cities"></select>
+    <script src="index.js"></script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly&language=he"
+    defer
+    ></script>
+
+    <div id="filter">
+    <h2>Let's Filter Up</h2>
+    <button id="allMuesums">Show me all</button>
+    <p>Muesem name:<input></p>
+
+    <select id="citySelector">
+            <option value="0">Select city</option>
+            <option value="1">RishonLeZion</option>
+            <option value="2">Tel-Aviv</option>
+            <option value="3">Jerusalem</option>
+            <option value="4">Holon</option>
+            <option value="5">Bat-Yam</option>
+    </select>
+    
+    <br>
+    <select id="categorySelector">
+        <option value="0">Select category</option>
+        <option value="1">Art</option>
+        <option value="2">History</option>
+        <option value="3">Sience</option>
+        <option value="4">Miltary</option>
+        <option value="5">Nature</option>
+    </select>
+    
+    <br>
+    <select id="ageRangeSelector">
+    
+        <option value="0">Select age range</option>
+        <option value="1">0-5</option>
+        <option value="2">5-12</option>
+        <option value="3">12+</option>
+        <option value="4">25-45</option>
+        <option value="5">45+</option>
+    </select>
+
+    <br>
+    <select id="areaSelector">
+    
+        <option value="0">Select area</option>
+        <option value="1">Lowland</option>
+        <option value="2">Tel Aviv Metropolitan Area</option>
+        <option value="3">Neet to fill</option>
+        <option value="4">Neet to fill</option>
+        <option value="5">Neet to fill</option>
+    </select>
+    <br>
+    <button>Clear All</button>
+    <br>
+    <button>Show Me On The Map</button>
+    <br>
+    
+    </div>
+
+
+  </body>
+</html>
