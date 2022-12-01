@@ -1,182 +1,165 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i');
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i");
 
+body{
+  padding:0;
+  margin:0;
+}
 
-.header{
-  position:relative;
-  overflow:hidden;
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  align-content: flex-start;
-  height:40vw;
-  min-height:400px;
-  max-height:500px;
-  min-width:400px;
+.header {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  height: 60vh;
   color: white;
-  font-family:  "Raleway", sans-serif
-} 
-
-.header:after{
-  content:"";
-  width:100%;
-  height:100%;
-  position:absolute;
-  bottom:0;
-  left:0;
-  z-index:-1;
- background: linear-gradient(to bottom, rgba(0,0,0,0.12) 40%,rgba(27,32,48,1) 100%);
 }
 
-.header:before{
-  content:"";
-  width:100%;
-  height:200%;
-  position:absolute;
-  top:0;
-  left:0;
+.header:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.12) 40%,
+    rgba(27, 32, 48, 1) 100%
+  );
+}
+
+.header:before {
+  content: "";
+  width: 100%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
   backface-visibility: hidden;
-  transform: translateZ(0); backface-visibility: hidden;
   transform: translateZ(0);
-  background:#1B2030 url("images/blueBackground.jfif") 50% 0 no-repeat;
-  background-size:100%;
-  background-attachment:fixed;
-  animation: grow 360s  linear 10ms infinite;
-  transition:all 0.4s ease-in-out;
-  z-index:-2
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  background: #1b2030 url("images/blueBackground.jfif") 50% 0 no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  animation: grow 360s linear 10ms infinite;
+  transition: all 0.4s ease-in-out;
+  z-index: -2;
 }
 
-.markerImage{
+.markerImage {
   width: 30px;
 }
 
-
-.info{
-  width:100%;
-  padding:15% 10% 0 5%;
-  text-align:center;
-  text-shadow:0 2px 3px rgba(0,0,0,0.2);
+.info {
+  width: 100%;
+  margin-top: 10%;
+  align-self: center;
+  text-align: center;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
   font-size: 25px;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .info > h1 {
-  margin:1px;
+  margin: 1px;
 }
 
-.info > h4{
+.info > h4 {
   margin: 7px;
 }
 
-@keyframes grow{
-  0% { transform: scale(1) translateY(-200px)}
-  90% { transform: scale(2) translateY(-900px)}
-}
-.content{  
-  padding:2% 10%;
-  text-align:justify;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-}
-
-div[class*=box] {
-  height: 33.33%;
-  width: 10%; 
-  display:flex;
-}
-
-.box-2 {
-   background-color: #0000ff;
-   justify-content: center;
-   border-radius: 5px;
-   }
-
-.btn {
-  line-height: 50px;
-  height: 50px;
+.content {
+  padding: 1% 10%;
+  font-size: 20px;
+  display: flex;
   text-align: center;
-  width: 200px;
-  cursor: pointer;
-  font-family: 'Courier New', Courier, monospace;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.btn-two {
-  color: #FFF;
-  transition: all 0.5s;
-  position: relative; 
-  align-items: center;
-  justify-content: center;
-
-}
-.btn-two span {
-  z-index: 2; 
+.startButton > a {
+  border-radius: 5px;
   display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%; 
-  align-items: center;
-}
-.btn-two::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  transition: all 0.5s;
-  border: 1px solid rgba(255,255,255,0.2);
-  background-color: rgba(255,255,255,0.1);
-}
-.btn-two::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  transition: all 0.5s;
-  border: 1px solid rgba(255,255,255,0.2);
-  background-color: rgba(255,255,255,0.1);
-}
-.btn-two:hover::before {
-  transform: rotate(-45deg);
-  background-color: rgba(255,255,255,0);
-}
-.btn-two:hover::after {
-  transform: rotate(45deg);
-  background-color: rgba(255,255,255,0);
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #333;
+  border: 2px solid #333;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all 0.35s;
 }
 
-#map{
-    height:735px;
-    width: 1200px;
-    background-color: palegoldenrod;
+.startButton span {
+  position: relative;
+  z-index: 2;
+}
+
+.startButton > a:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #3131ff;
+  transition: all 0.35s;
+}
+
+.startButton > a:hover {
+  color: #fff;
+}
+
+.startButton > a:hover:after {
+  width: 100%;
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(1) translateY(-200px);
   }
-
-#filter{
-  border: 1px;
-  font-family: 'Times New Roman', Times, serif;
-  background-color: white;
-  position: absolute; 
-  top: 5px; 
-  right: 10px;
-  height: 725px;
-  padding-left: 10px;
-
+  90% {
+    transform: scale(2) translateY(-900px);
+  }
 }
 
-#filter > h2,select,p,input, button{
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+/* Search On Map styles  */
+
+main{
+  display: flex;
+}
+
+#map {
+  height: 99vh;
+  width: 80vw;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+}
+
+p,
+#filter > h2,
+select,
+input,
+button {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
   border-color: black;
-
+  background-color: white;
 }
 
-#filter > button{
-  background-color: white;
+button{
+  cursor: pointer;
 }
