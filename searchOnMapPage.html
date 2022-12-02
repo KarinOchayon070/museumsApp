@@ -18,9 +18,10 @@
     <main>
       <div id="map"></div>
       <div class="filters">
-        <h2>Let's Filter Up</h2>
+        <!-- <h2>Let's Filter Up</h2> -->
+        <img src="images/header.png">
         <div>
-          <label for="searchByName">Search For Specific Museum</label>
+          <label for="searchByName">Search For Specific Museum Name:</label>
           <input id="searchByName" />
           <ul id="suggestions"></ul>
         </div>
@@ -33,7 +34,7 @@
           <div class="fa fa-star"></div>
         </div>
 
-        <output for="priceSlider">Max Price: 0₪</output>
+        <output for="priceSlider">Max Price: 0₪.</output>
         <input
           min="0"
           max="100"
@@ -41,10 +42,10 @@
           value="0"
           class="slider"
           id="priceSlider"
-          oninput="this.previousElementSibling.value = 'Max Price:' + this.value + '₪'"
+          oninput="this.previousElementSibling.value = 'Max Price: ' + this.value + '₪.'"
         />
 
-        <output for="radiusSlider">Radius from your home:</output>
+        <output for="radiusSlider">Max Radius From Your Home: </output>
         <input
           min="0"
           max="500"
@@ -52,8 +53,12 @@
           value="0"
           class="slider"
           id="radiusSlider"
-          oninput="this.previousElementSibling.value = 'Radius from your home:' + this.value + 'KM'"
+          oninput="this.previousElementSibling.value = 'Max Radius From Your Home: ' + this.value + 'KM.'"
         />
+        <div>
+          <label for="isOpenInWeekends">Open On Weekends</label><input type="checkbox" id="isOpenInWeekends" name="isOpenInWeekends" value="Open On Weekends">
+        </div>
+        
 
         <select id="citySelector">
           <option value="" disabled selected>Select City</option>
