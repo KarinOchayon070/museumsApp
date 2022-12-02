@@ -3,6 +3,10 @@
   <head>
     <link rel="stylesheet" href="styles.css" />
     <script src="./constants.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,7 +19,41 @@
       <div id="map"></div>
       <div class="filters">
         <h2>Let's Filter Up</h2>
-        <p>Muesem name:<input /></p>
+        <div>
+          <label for="searchByName">Search For Specific Museum</label>
+          <input id="searchByName" />
+          <ul id="suggestions"></ul>
+        </div>
+
+        <div id="starRarting">
+          <div class="fa fa-star"></div>
+          <div class="fa fa-star"></div>
+          <div class="fa fa-star"></div>
+          <div class="fa fa-star"></div>
+          <div class="fa fa-star"></div>
+        </div>
+
+        <output for="priceSlider">Max Price: 0₪</output>
+        <input
+          min="0"
+          max="100"
+          type="range"
+          value="0"
+          class="slider"
+          id="priceSlider"
+          oninput="this.previousElementSibling.value = 'Max Price:' + this.value + '₪'"
+        />
+
+        <output for="radiusSlider">Radius from your home:</output>
+        <input
+          min="0"
+          max="500"
+          type="range"
+          value="0"
+          class="slider"
+          id="radiusSlider"
+          oninput="this.previousElementSibling.value = 'Radius from your home:' + this.value + 'KM'"
+        />
 
         <select id="citySelector">
           <option value="" disabled selected>Select City</option>
