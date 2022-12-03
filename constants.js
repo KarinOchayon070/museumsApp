@@ -37,6 +37,7 @@ const museums = [
     category: categories.Art,
     rating: 2,
     price: 55,
+    openAtWeekends: true,
   },
   {
     name: "Design Museum Holon",
@@ -48,6 +49,7 @@ const museums = [
     category: categories.Children,
     rating: 4,
     price: 80,
+    openAtWeekends: true,
   },
   {
     name: "YOVEL THE MAN MUSEUM ( nudes included )",
@@ -59,6 +61,7 @@ const museums = [
     category: categories.Holocaust,
     rating: 5,
     price: 23,
+    openAtWeekends: false,
   },
   {
     name: "Darling Museum ( lots of nudes )",
@@ -70,5 +73,6 @@ const museums = [
     category: categories.Children,
     rating: 4,
     price: 80,
+    openAtWeekends: false,
   },
 ];

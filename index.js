@@ -15,6 +15,7 @@ const suggestions = document.getElementById("suggestions");
 const starRarting = document.getElementById("starRarting");
 const priceSlider = document.getElementById("priceSlider");
 const radiusSlider = document.getElementById("radiusSlider");
+const openAtWeekendsCheckbox = document.getElementById("isOpenInWeekends");
 
 const autoCompleteSearch = (event) => {
   suggestions.innerHTML = ``;
@@ -91,6 +92,7 @@ const clearFilters = () => {
   areaSelector.value = "";
   searchByName.value = "";
   suggestions.innerHTML = "";
+  openAtWeekendsCheckbox.checked = false;
 
   getMuseums();
 };
@@ -98,21 +100,14 @@ const clearFilters = () => {
 const isValidRadius = ({ lat, lng }) => {
   if (!userLocation) return true;
 
-  const radius = +radiusSlider.value;
+  const radius = +radiusSlider.value / 100;
 
-  const latDistance = (lat - userLocation.lat) * 10000;
-  const lngDistance = (lng - userLocation.lng) * 10000;
+  const latDistance = Math.pow(lat - userLocation.lat, 2);
+  const lngDistance = Math.pow(lng - userLocation.lng, 2);
 
-  console.log(lat, userLocation.lat);
+  const distance = Math.sqrt(latDistance + lngDistance);
 
-  if (
-    Math.abs(latDistance) - radius >= 0 &&
-    Math.abs(lngDistance) - radius >= 0
-  ) {
-    return true;
-  }
-
-  return false;
+  return distance <= radius;
 };
 
 const getMuseums = () => {
@@ -123,9 +118,11 @@ const getMuseums = () => {
   const area = areaSelector.value;
   const museumName = searchByName.value;
   const price = priceSlider.value;
+  const isOpenAtweekends = openAtWeekendsCheckbox.checked;
 
   museums.forEach((museum) => {
     const isNotValidMeuseum =
+      (isOpenAtweekends && !museum.openAtWeekends) ||
       !isValidRadius(museum.position) ||
       price >= museum.price ||
       (rating && rating > museum.rating) ||
