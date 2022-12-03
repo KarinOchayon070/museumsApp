@@ -1,8 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i");
 
-body{
-  padding:0;
-  margin:0;
+html {
+  font-family: "Gill Sans MT";
+}
+
+body {
+  padding: 0;
+  margin: 0;
 }
 
 .header {
@@ -58,7 +62,6 @@ body{
   text-align: center;
   text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
   font-size: 25px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .info > h1 {
@@ -76,8 +79,6 @@ body{
   text-align: center;
   align-items: center;
   flex-direction: column;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .startButton > a {
@@ -87,7 +88,6 @@ body{
   height: 40px;
   line-height: 40px;
   font-size: 18px;
-  font-family: sans-serif;
   text-decoration: none;
   color: #333;
   border: 2px solid #333;
@@ -132,45 +132,57 @@ body{
 
 /* Search On Map styles  */
 
-main{
+main {
   display: flex;
 }
 
 #map {
-  height: 99vh;
+  height: 100vh;
   width: 80vw;
 }
 
 .filters {
+  width: 20vw;
+  display: flex;
+  padding: 0 20px;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.fa-star {
+  cursor: pointer;
+}
+
+.checkedStar {
+  transition: 0.3s;
+  color: orange;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.column {
   display: flex;
   flex-direction: column;
 }
 
-.checkedStar {
-  color:orange;
 
+.row > label, .column > output, .column > label {
+  font-size: 20px;
 }
-
-.starRarting{
-  background-color: pink;
-
-}
-
 
 p,
 #filter > h2,
 select,
 input,
 label,
-
 output,
-li,
 button {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; */
   padding: 10px;
-  margin: 10px;
   font-size: 16px;
   border-radius: 10px;
   border-color: black;
@@ -178,18 +190,48 @@ button {
   cursor: pointer;
 }
 
-button{
+button {
   cursor: pointer;
 }
 
-img{
+img {
   padding: 10px;
   margin: 10px;
 }
 
-ul{
-  padding-bottom: 2px;
-  padding-top: 2px;
-  padding-right: 40px;
+ul {
+  position: absolute;
+  background-color: white;
+  border: 1px solid black;
+  list-style-type: none;
+  padding:0;
 }
 
+#searchButton{
+  margin-top: 50px;
+  background-color: #3131ff;
+  color: white;
+  transition: 0.5s;
+}
+
+#searchButton:hover{
+  background-color: #3131ffbb;
+}
+
+#clearButton{
+  transition: 0.5s;
+}
+
+#clearButton:hover{
+  background-color: rgb(237, 237, 237);
+}
+
+ul > li{
+  font-size: 20px;
+  padding:10px;
+  cursor: pointer;
+}
+
+ul > li:hover{
+  background-color: #3131ff44;
+}

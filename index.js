@@ -15,6 +15,8 @@ const suggestions = document.getElementById("suggestions");
 const starRarting = document.getElementById("starRarting");
 const priceSlider = document.getElementById("priceSlider");
 const radiusSlider = document.getElementById("radiusSlider");
+const radiusOutput = document.getElementById("radiusOutput");
+const priceOutput = document.getElementById("priceOutput");
 const openAtWeekendsCheckbox = document.getElementById("isOpenInWeekends");
 
 const autoCompleteSearch = (event) => {
@@ -54,23 +56,14 @@ const populateSelector = (element, object) => {
   });
 };
 
-const generateContentString = () => {
+const generateContentString = ({ name, discription }) => {
   const contentString =
     '<div id="content">' +
     '<div id="siteNotice">' +
     "</div>" +
-    '<h1 id="firstHeading" class="firstHeading">blaaa</h1>' +
+    `<h1>${name}</h1>` +
     '<div id="bodyContent">' +
-    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-    "sandstone rock formation in the southern part of the " +
-    "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
-    "south west of the nearest large town, Alice Springs; 450&#160;km " +
-    "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
-    "features of the Uluru - Kata Tjuta National Park. Uluru is " +
-    "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
-    "Aboriginal people of the area. It has many springs, waterholes, " +
-    "rock caves and ancient paintings. Uluru is listed as a World " +
-    "Heritage Site.</p>" +
+    `<p>${discription}</p>` +
     '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
     "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
     "(last visited June 22, 2009).</p>" +
@@ -93,6 +86,16 @@ const clearFilters = () => {
   searchByName.value = "";
   suggestions.innerHTML = "";
   openAtWeekendsCheckbox.checked = false;
+  radiusOutput.value = "Max Radius From Your Home";
+  priceOutput.value = "Max Price";
+  priceSlider.value = 0;
+  radiusSlider.value = 0;
+  rating = 0;
+  radiusCircle.setRadius(null);
+
+  Object.values(starRarting.children).forEach((star, i) => {
+    star.classList.remove("checkedStar");
+  });
 
   getMuseums();
 };
@@ -142,7 +145,7 @@ const getMuseums = () => {
     markers.push(marker);
 
     marker.addListener("click", () => {
-      infoWindow.setContent(generateContentString());
+      infoWindow.setContent(generateContentString(museum));
       infoWindow.open({
         map,
         anchor: marker,

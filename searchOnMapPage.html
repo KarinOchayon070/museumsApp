@@ -18,49 +18,62 @@
     <main>
       <div id="map"></div>
       <div class="filters">
-        <!-- <h2>Let's Filter Up</h2> -->
-        <img src="images/header.png">
-        <div>
+        <img id="headerImage" src="images/filtersHeader.png"/>
+
+        <div class="column">
           <label for="searchByName">Search For Specific Museum Name:</label>
-          <input id="searchByName" />
-          <ul id="suggestions"></ul>
+          <div>
+            <input id="searchByName" />
+            <ul id="suggestions"></ul>
+          </div>
         </div>
 
-        <div id="starRarting">
-          <div class="fa fa-star"></div>
-          <div class="fa fa-star"></div>
-          <div class="fa fa-star"></div>
-          <div class="fa fa-star"></div>
-          <div class="fa fa-star"></div>
+        <div class="row">
+          <label>Rating</label>
+
+          <div id="starRarting">
+            <div class="fa fa-star fa-lg"></div>
+            <div class="fa fa-star fa-lg"></div>
+            <div class="fa fa-star fa-lg"></div>
+            <div class="fa fa-star fa-lg"></div>
+            <div class="fa fa-star fa-lg"></div>
+          </div>
         </div>
 
-        <output for="priceSlider">Max Price: 0₪.</output>
-        <input
-          min="0"
-          max="100"
-          type="range"
-          value="0"
-          class="slider"
-          id="priceSlider"
-          oninput="this.previousElementSibling.value = 'Max Price: ' + this.value + '₪.'"
-        />
-
-        <output for="radiusSlider">Max Radius From Your Home: </output>
-        <input
-          min="0"
-          max="500"
-          type="range"
-          value="0"
-          class="slider"
-          id="radiusSlider"
-          oninput="this.previousElementSibling.value = 'Max Radius From Your Home: ' + this.value + 'KM.'"
-        />
-        
-        <div>
+        <div class="row">
           <label for="isOpenInWeekends">Open On Weekends</label>
-          <input type="checkbox" id="isOpenInWeekends" name="isOpenInWeekends">
+          <input
+            type="checkbox"
+            id="isOpenInWeekends"
+            name="isOpenInWeekends"
+          />
         </div>
-        
+
+        <div class="column">
+          <output id="priceOutput" for="priceSlider">Max Price</output>
+          <input
+            min="0"
+            max="100"
+            type="range"
+            value="0"
+            class="slider"
+            id="priceSlider"
+            oninput="this.previousElementSibling.value = 'Max Price: ' + this.value + '₪'"
+          />
+        </div>
+
+        <div class="column">
+          <output id="radiusOutput" for="radiusSlider">Max Radius From Your Home</output>
+          <input
+            min="0"
+            max="500"
+            type="range"
+            value="0"
+            class="slider"
+            id="radiusSlider"
+            oninput="this.previousElementSibling.value = 'Max Radius From Your Home: ' + this.value + 'KM'"
+          />
+        </div>
 
         <select id="citySelector">
           <option value="" disabled selected>Select City</option>

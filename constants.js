@@ -38,6 +38,7 @@ const museums = [
     rating: 2,
     price: 55,
     openAtWeekends: true,
+    discription: "HAMUDI",
   },
   {
     name: "Design Museum Holon",
@@ -50,6 +51,7 @@ const museums = [
     rating: 4,
     price: 80,
     openAtWeekends: true,
+    discription: "HAMUDI",
   },
   {
     name: "YOVEL THE MAN MUSEUM ( nudes included )",
@@ -62,6 +64,7 @@ const museums = [
     rating: 5,
     price: 23,
     openAtWeekends: false,
+    discription: "HAMUDI",
   },
   {
     name: "Darling Museum ( lots of nudes )",
@@ -74,5 +77,6 @@ const museums = [
     rating: 4,
     price: 80,
     openAtWeekends: false,
+    discription: "HAMUDI",
   },
 ];
