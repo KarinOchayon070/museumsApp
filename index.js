@@ -101,13 +101,12 @@ const clearFilters = () => {
 };
 
 const isValidRadius = ({ lat, lng }) => {
-  if (!userLocation) return true;
-
   const radius = +radiusSlider.value / 100;
+
+  if (!userLocation || !radius) return true;
 
   const latDistance = Math.pow(lat - userLocation.lat, 2);
   const lngDistance = Math.pow(lng - userLocation.lng, 2);
-
   const distance = Math.sqrt(latDistance + lngDistance);
 
   return distance <= radius;
@@ -140,6 +139,7 @@ const getMuseums = () => {
       map,
       position: museum.position,
       title: museum.name,
+      icon: iconOnMap[museum.category],
     });
 
     markers.push(marker);

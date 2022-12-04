@@ -26,6 +26,10 @@ const areas = {
   South: "South",
 };
 
+const iconOnMap = {
+  Children: "./images/iconChildren.png",
+};
+
 const museums = [
   {
     name: "Rishon Lezion Museum",
@@ -54,7 +58,7 @@ const museums = [
     discription: "HAMUDI",
   },
   {
-    name: "YOVEL THE MAN MUSEUM ( nudes included )",
+    name: "YOVEL THE MAN MUSEUM",
     city: cities.Holon,
     position: { lat: 32.0128798761661, lng: 33.77740342205919 },
     website: "http://www.dmh.org.il/",
@@ -65,9 +69,10 @@ const museums = [
     price: 23,
     openAtWeekends: false,
     discription: "HAMUDI",
+    image: "",
   },
   {
-    name: "Darling Museum ( lots of nudes )",
+    name: "Darling Museum",
     city: cities.Holon,
     position: { lat: 34.0128798761661, lng: 34.77740342205919 },
     website: "http://www.dmh.org.il/",
