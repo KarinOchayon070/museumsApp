@@ -18,6 +18,7 @@ const categories = {
   IDF: "IDF",
   Music: "Music",
   Art: "Art",
+  Gallery: "Gallery",
 };
 
 const areas = {
@@ -28,6 +29,12 @@ const areas = {
 
 const iconOnMap = {
   Children: "./images/iconChildren.png",
+  Science: "./images/iconScience.png",
+  IDF: "./images/iconIDF.png",
+  Holocaust: "./images/iconStarOfDavid.png",
+  Music: "./images/iconMusic.png",
+  Art: "./images/iconArt.png",
+  Gallery: "./images/iconsGallery.png",
 };
 
 const museums = [
@@ -38,7 +45,7 @@ const museums = [
     website: "http://rlzm.co.il/",
     phone: "039598862",
     area: areas.North,
-    category: categories.Art,
+    category: categories.Holocaust,
     rating: 2,
     price: 55,
     openAtWeekends: true,
@@ -78,7 +85,7 @@ const museums = [
     website: "http://www.dmh.org.il/",
     phone: "0732151515",
     area: areas.South,
-    category: categories.Children,
+    category: categories.IDF,
     rating: 4,
     price: 80,
     openAtWeekends: false,
