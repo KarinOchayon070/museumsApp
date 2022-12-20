@@ -56,20 +56,58 @@ const populateSelector = (element, object) => {
   });
 };
 
-const generateContentString = ({ name, discription }) => {
+const generateContentString = ({
+  name,
+  discription,
+  city,
+  phone,
+  image,
+  website,
+  category,
+  rating,
+  price,
+  openAtWeekends,
+}) => {
   const contentString =
     '<div id="content">' +
     '<div id="siteNotice">' +
     "</div>" +
-    `<h1>${name}</h1>` +
+    `<h1 style="color:blue;">${name}</h1>` +
+    `<img src=${image}>` +
     '<div id="bodyContent">' +
-    `<p>${discription}</p>` +
-    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-    "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
-    "(last visited June 22, 2009).</p>" +
+    "<p>" +
+    "Discription - " +
+    `${discription}` +
+    "</p>" +
+    "<p>" +
+    "City -" +
+    `${city}` +
+    "</p>" +
+    "<p>" +
+    "Phone Number - " +
+    `${phone}` +
+    "</p>" +
+    "<p>" +
+    "Museum Category - " +
+    `${category}` +
+    "</p>" +
+    "<p>" +
+    "People who visited this museum gave it a rating of " +
+    `${rating}` +
+    " stars out of 5" +
+    "</p>" +
+    "<p>" +
+    "Regular Price - " +
+    `${price}` +
+    " ₪" +
+    "</p>" +
+    "<p>" +
+    "Open On weekends - " +
+    `${openAtWeekends}` +
+    "</p>" +
+    `<a href=${website}>Click here to check the museum website</a>` +
     "</div>" +
     "</div>";
-
   return contentString;
 };
 
