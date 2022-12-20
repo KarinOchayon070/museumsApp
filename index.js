@@ -162,9 +162,9 @@ const getMuseums = () => {
 
   museums.forEach((museum) => {
     const isNotValidMeuseum =
-      (isOpenAtweekends && !museum.openAtWeekends) ||
       !isValidRadius(museum.position) ||
-      price >= museum.price ||
+      price > museum.price ||
+      (isOpenAtweekends && !museum.openAtWeekends) ||
       (rating && rating > museum.rating) ||
       (city && city !== museum.city) ||
       (category && category !== museum.category) ||
