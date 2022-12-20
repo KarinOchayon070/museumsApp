@@ -19,6 +19,7 @@ const radiusOutput = document.getElementById("radiusOutput");
 const priceOutput = document.getElementById("priceOutput");
 const openAtWeekendsCheckbox = document.getElementById("isOpenInWeekends");
 
+//Search For Specific Museum Name
 const autoCompleteSearch = (event) => {
   suggestions.innerHTML = ``;
   const inputValue = event.target.value;
@@ -47,6 +48,7 @@ const onRadiusChange = (event) => {
   }
 };
 
+//Cities, categories and areas using this function.
 const populateSelector = (element, object) => {
   Object.values(object).forEach((item) => {
     const option = document.createElement("option");
@@ -56,6 +58,8 @@ const populateSelector = (element, object) => {
   });
 };
 
+//When clicking on an icon on the map - a new window will open with a comprehensive description of the selected museum.
+//Name of the museum, picture, short description, city, category, price, etc.
 const generateContentString = ({
   name,
   discription,
@@ -70,53 +74,77 @@ const generateContentString = ({
 }) => {
   const contentString =
     '<div id="content">' +
-    '<div id="siteNotice">' +
-    "</div>" +
-    `<h1 style="color:blue;">${name}</h1>` +
+    `<h1 style="text-align:center;" >${name}</h1>` +
+    '<div style="display:flex;justify-content:center;"  id="Image content">' +
     `<img src=${image}>` +
-    '<div id="bodyContent">' +
+    "</div>" +
+    '<div style="padding:10px;" id="bodyContent">' +
     "<p>" +
+    "<b>" +
     "Discription - " +
+    "</b>" +
     `${discription}` +
     "</p>" +
     "<p>" +
-    "City -" +
+    "<b>" +
+    "City - " +
+    "</b>" +
     `${city}` +
     "</p>" +
     "<p>" +
+    "<b>" +
     "Phone Number - " +
+    "</b>" +
     `${phone}` +
     "</p>" +
     "<p>" +
+    "<b>" +
     "Museum Category - " +
+    "</b>" +
     `${category}` +
     "</p>" +
     "<p>" +
+    "<b>" +
+    "Rating - " +
+    "</b>" +
     "People who visited this museum gave it a rating of " +
     `${rating}` +
     " stars out of 5" +
     "</p>" +
     "<p>" +
+    "<b>" +
     "Regular Price - " +
+    "</b>" +
     `${price}` +
-    " ₪" +
+    "₪" +
     "</p>" +
     "<p>" +
-    "Open On weekends - " +
+    "<b>" +
+    "Open On Weekends - " +
+    "</b>" +
     `${openAtWeekends}` +
     "</p>" +
+    "<p>" +
+    "<b>" +
+    "Website Link - " +
+    "</b>" +
     `<a href=${website}>Click here to check the museum website</a>` +
     "</div>" +
     "</div>";
   return contentString;
 };
 
+//Function that clear all the current markers on the map.
+//We will call this function when we get all the museums.
+//To mention, the initial state of our application and the state reached when the reset filters button is pressed.
 const clearMarkers = () => {
   markers.forEach((marker) => {
     marker.setMap(null);
   });
 };
 
+//When the user click on "Clear Filters" all of the fillters reset.
+//The map returns to the initial state with all the museums on it.
 const clearFilters = () => {
   citySelector.value = "";
   categorySelector.value = "";
@@ -130,13 +158,18 @@ const clearFilters = () => {
   radiusSlider.value = 0;
   rating = 0;
   radiusCircle.setRadius(null);
-
   Object.values(starRarting.children).forEach((star, i) => {
     star.classList.remove("checkedStar");
   });
-
+  //After pressing the reset button - all the museums will be shown on the map again (this was the initial state).
   getMuseums();
 };
+
+//A formula used to calculate which museums are within the radius entered by the user.
+//The square root of - (x1-x2)^2 + (y1-y2)^2.
+//The first part (x) represent the lat of the museum and the lat of the user.
+//The second part (y) represent the lng of the museum and the lng of the user.
+//The formula gives us the distance between this two point - while this distance in NOT BIGGER than the radius the user chose - this museum is ok.
 
 const isValidRadius = ({ lat, lng }) => {
   const radius = +radiusSlider.value / 100;
@@ -150,6 +183,7 @@ const isValidRadius = ({ lat, lng }) => {
   return distance <= radius;
 };
 
+//The main function
 const getMuseums = () => {
   clearMarkers();
 
@@ -173,15 +207,17 @@ const getMuseums = () => {
 
     if (isNotValidMeuseum) return;
 
+    //Creating markers on the map - each category got its own marker/
+    //Children's museum got a children's museum icon, music museum got a music icon, etc.
     const marker = new google.maps.Marker({
       map,
       position: museum.position,
       title: museum.name,
       icon: iconOnMap[museum.category],
     });
-
     markers.push(marker);
 
+    //When you click on one of the icons on the map - a small window will open with information about the selected museum.
     marker.addListener("click", () => {
       infoWindow.setContent(generateContentString(museum));
       infoWindow.open({
@@ -192,6 +228,7 @@ const getMuseums = () => {
   });
 };
 
+//Initializing the map - the values ​​given are the map of Israel
 const initMap = () => {
   const israelLocation = { lat: 31.5, lng: 35.32813184265719 };
 
@@ -217,6 +254,8 @@ const initMap = () => {
   getMuseums();
 };
 
+//A function from the internet where stars are used to represent the ratings.
+//The fifth star represents the highest rating while the first star represents the lowest rating.
 Object.values(starRarting.children).forEach((star, i) => {
   const handleOnClick = () => {
     rating = i + 1;
@@ -229,10 +268,10 @@ Object.values(starRarting.children).forEach((star, i) => {
       }
     });
   };
-
   star.addEventListener("click", handleOnClick);
 });
 
+//A built-in function from the Internet through which the user's location can be obtained (after approval).
 window.navigator.geolocation.getCurrentPosition((response) => {
   const { latitude, longitude } = response.coords;
   userLocation = { lat: latitude, lng: longitude };
@@ -243,6 +282,7 @@ populateSelector(citySelector, cities);
 populateSelector(categorySelector, categories);
 populateSelector(areaSelector, areas);
 
+//EventListener for each of the actions we performed
 searchButton.addEventListener("click", getMuseums);
 clearButton.addEventListener("click", clearFilters);
 radiusSlider.addEventListener("click", onRadiusChange);
