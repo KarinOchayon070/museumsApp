@@ -638,7 +638,7 @@ const museums = [
   {
     name: "Beit Hameiri",
     city: cities.Zefat,
-    position: { lat: 31.93421477614452, lng: 34.70384913047981 },
+    position: { lat: 32.96865181506545, lng: 35.4913421079232 },
     website: "NONE",
     phone: "NONE",
     area: areas.North,

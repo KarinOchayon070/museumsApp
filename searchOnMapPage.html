@@ -74,7 +74,11 @@
             oninput="this.previousElementSibling.value = 'Max Radius From Your Home: ' + this.value + 'KM'"
           />
         </div>
-
+        
+        <select id="areaSelector">
+          <option value="" disabled selected>Select Area</option>
+        </select>
+        
         <select id="citySelector">
           <option value="" disabled selected>Select City</option>
         </select>
@@ -83,9 +87,6 @@
           <option value="" disabled selected>Select Category</option>
         </select>
 
-        <select id="areaSelector">
-          <option value="" disabled selected>Select Area</option>
-        </select>
 
         <button id="searchButton">Search</button>
         <button id="clearButton">Clear Filters</button>
