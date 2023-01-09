@@ -1,3 +1,7 @@
+//This file is used as our database.
+//Since our data is dynamic and does not change often (or at all) - we put together the general information about our museums in this file.
+//It should be noted that the project was used in each of the objects presented - something that contributes to the code and the use of existing information.
+
 const cities = {
   Afikim: "Afikim",
   Afula: "Afula",

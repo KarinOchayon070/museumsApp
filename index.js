@@ -19,16 +19,15 @@ const radiusOutput = document.getElementById("radiusOutput");
 const priceOutput = document.getElementById("priceOutput");
 const openAtWeekendsCheckbox = document.getElementById("isOpenInWeekends");
 
-//Search For Specific Museum Name
+//Search for specific museum name
 const autoCompleteSearch = (event) => {
   suggestions.innerHTML = ``;
   const inputValue = event.target.value;
-
+  //As long as the input has a length (= input exists)
   if (inputValue.length) {
     const matchingValues = museums.filter((value) =>
       value.name.toLowerCase().includes(inputValue.toLowerCase())
     );
-
     matchingValues.forEach((value) => {
       suggestions.innerHTML = suggestions.innerHTML + `<li>${value.name}</li>`;
     });
@@ -48,7 +47,7 @@ const onRadiusChange = (event) => {
   }
 };
 
-//Cities, categories and areas using this function.
+//Cities, categories and areas using this function (these three filters are selectors)
 const populateSelector = (element, object) => {
   Object.values(object).forEach((item) => {
     const option = document.createElement("option");
@@ -58,8 +57,8 @@ const populateSelector = (element, object) => {
   });
 };
 
-//When clicking on an icon on the map - a new window will open with a comprehensive description of the selected museum.
-//Name of the museum, picture, short description, city, category, price, etc.
+//When clicking on an icon on the map - a new window will open with a comprehensive description of the selected museum
+//Name of the museum, picture, short description, city, category, price, etc
 const generateContentString = ({
   name,
   discription,
@@ -134,17 +133,17 @@ const generateContentString = ({
   return contentString;
 };
 
-//Function that clear all the current markers on the map.
-//We will call this function when we get all the museums.
-//To mention, the initial state of our application and the state reached when the reset filters button is pressed.
+//Function that clear all the current markers on the map
+//We will call this function when we get all the museums
+//To mention, the initial state of our application and the state reached when the reset filters button is pressed
 const clearMarkers = () => {
   markers.forEach((marker) => {
     marker.setMap(null);
   });
 };
 
-//When the user click on "Clear Filters" all of the fillters reset.
-//The map returns to the initial state with all the museums on it.
+//When the user click on "Clear Filters" all of the fillters reset
+//The map returns to the initial state with all the museums on it
 const clearFilters = () => {
   citySelector.value = "";
   categorySelector.value = "";
@@ -161,15 +160,15 @@ const clearFilters = () => {
   Object.values(starRarting.children).forEach((star, i) => {
     star.classList.remove("checkedStar");
   });
-  //After pressing the reset button - all the museums will be shown on the map again (this was the initial state).
+  //After pressing the reset button - all the museums will be shown on the map again (this was the initial state)
   getMuseums();
 };
 
-//A formula used to calculate which museums are within the radius entered by the user.
-//The square root of - (x1-x2)^2 + (y1-y2)^2.
-//The first part (x) represent the lat of the museum and the lat of the user.
-//The second part (y) represent the lng of the museum and the lng of the user.
-//The formula gives us the distance between this two point - while this distance in NOT BIGGER than the radius the user chose - this museum is ok.
+//A formula used to calculate which museums are within the radius entered by the user
+//The square root of - (x1-x2)^2 + (y1-y2)^2
+//The first part (x) represent the lat of the museum and the lat of the user
+//The second part (y) represent the lng of the museum and the lng of the user
+//The formula gives us the distance between this two point - while this distance in NOT BIGGER than the radius the user chose - this museum is ok
 
 const isValidRadius = ({ lat, lng }) => {
   const radius = +radiusSlider.value / 100;
@@ -197,7 +196,7 @@ const getMuseums = () => {
   museums.forEach((museum) => {
     const isNotValidMeuseum =
       !isValidRadius(museum.position) ||
-      price > museum.price ||
+      (price < museum.price && price != 0) ||
       (isOpenAtweekends && !museum.openAtWeekends) ||
       (rating && rating > museum.rating) ||
       (city && city !== museum.city) ||
@@ -254,8 +253,8 @@ const initMap = () => {
   getMuseums();
 };
 
-//A function from the internet where stars are used to represent the ratings.
-//The fifth star represents the highest rating while the first star represents the lowest rating.
+//A function from the internet where stars are used to represent the ratings
+//The fifth star represents the highest rating while the first star represents the lowest rating
 Object.values(starRarting.children).forEach((star, i) => {
   const handleOnClick = () => {
     rating = i + 1;
@@ -271,7 +270,7 @@ Object.values(starRarting.children).forEach((star, i) => {
   star.addEventListener("click", handleOnClick);
 });
 
-//A built-in function from the Internet through which the user's location can be obtained (after approval).
+//A built-in function from the Internet through which the user's location can be obtained (after approval)
 window.navigator.geolocation.getCurrentPosition((response) => {
   const { latitude, longitude } = response.coords;
   userLocation = { lat: latitude, lng: longitude };
@@ -289,4 +288,6 @@ radiusSlider.addEventListener("click", onRadiusChange);
 searchByName.addEventListener("input", autoCompleteSearch);
 suggestions.addEventListener("click", onAutoCompleteSelect);
 
+//The Maps JavaScript API - https://developers.google.com/maps/documentation/javascript/overview
+//This is how we init the google map into our project
 window.initMap = initMap;
