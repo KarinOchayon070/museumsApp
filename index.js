@@ -34,9 +34,9 @@ const autoCompleteSearch = (event) => {
   }
 };
 
-const onAutoCompleteSelect = (value) => {
-  if (value.target.tagName === "LI") {
-    searchByName.value = value.target.textContent;
+const onAutoCompleteSelect = (event) => {
+  if (event.target.tagName === "LI") {
+    searchByName.value = event.target.textContent;
     suggestions.innerHTML = ``;
   }
 };
@@ -184,6 +184,7 @@ const isValidRadius = ({ lat, lng }) => {
 
 //The main function
 const getMuseums = () => {
+  //Must clear all the markers before starting new search
   clearMarkers();
 
   const city = citySelector.value;
@@ -196,7 +197,7 @@ const getMuseums = () => {
   museums.forEach((museum) => {
     const isNotValidMeuseum =
       !isValidRadius(museum.position) ||
-      (price < museum.price && price != 0) ||
+      (+price && price < museum.price) ||
       (isOpenAtweekends && !museum.openAtWeekends) ||
       (rating && rating > museum.rating) ||
       (city && city !== museum.city) ||
