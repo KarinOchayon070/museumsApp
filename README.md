@@ -3,7 +3,7 @@
 Hi!
 
 This is our final project in "GIS" course.
-In this project we flavored a map, and allowed the user to search and filter museums according to category, radius, city, price, rating,
+In this project we flavored a map (google maps api), and allowed the user to search and filter museums according to category, radius, city, price, rating,
 area, weekends opening and by specific name!
 
 An explanatory video on YouTube - https://www.youtube.com/watch?v=LBYe9MLp1BU&ab_channel=KarinOchayon.
