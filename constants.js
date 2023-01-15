@@ -716,7 +716,7 @@ const museums = [
   {
     name: "Bible Lands Museum Jerusalem ",
     city: cities.Jerusalem,
-    position: { lat: 32.437024209879795, lng: 34.923670982800516 },
+    position: { lat: 31.77517358093888, lng: 35.202358085297334 },
     website: "http://www.blmj.org/",
     phone: "025611066",
     area: areas.Center,
@@ -1676,7 +1676,7 @@ const museums = [
     position: { lat: 32.80483302899027, lng: 35.10567692353173 },
     website: "http://www.hechalshlomo.org.il/",
     phone: "025889000",
-    area: areas.Center,
+    area: areas.North,
     category: categories.Culture,
     rating: 4.4,
     price: 25,
